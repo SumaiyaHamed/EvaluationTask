@@ -7,5 +7,6 @@
  */
 module EvaluationTask {
 	requires java.net.http;
+	requires gson;
 	//requires gson;
 }
