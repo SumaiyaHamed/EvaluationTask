@@ -62,7 +62,8 @@ public class Main {
 		
 		//search from file a string which is user input in java:
 		Scanner sa=new Scanner(System.in);
-		String String=sa.next();
+		System.out.println("Enter the word to be found");
+		String word=sa.next();
 		boolean result=false;
 		int count=0;
 		System.out.println("contentof the line");
@@ -70,6 +71,16 @@ public class Main {
 		while(sa1.hasNextLine()) {
 			String line=sa1.nextLine();
 			System.out.println(line);
+			if (line.indexOf(word)!=-1) {
+				result=true;
+				count=count+1;
+			}
+		}
+		if(result) {
+			System.out.println("number is:"+count);
+	
+		}else {
+			System.out.println("nathing:");
 		}
 		
 		
