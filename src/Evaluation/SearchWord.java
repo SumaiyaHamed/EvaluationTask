@@ -6,9 +6,10 @@ import java.util.Scanner;
 
 public class SearchWord {
 	
-	public static void NationalizeMethod() throws FileNotFoundException {
+	public static void SearchWordString() throws FileNotFoundException  {
 		
 		// search from file a string which is user input in java:
+		
 				Scanner sa=new Scanner(System.in);
 				System.out.println("Enter the word to be found");
 				String word=sa.next();
@@ -16,9 +17,9 @@ public class SearchWord {
 				int count=0;
 				
 				System.out.println("_____________");
-
 				System.out.println("content of the line");
 				System.out.println("_____________");
+				
 				Scanner sa1=new Scanner(new FileInputStream("C:\\Users\\User007\\eclipse-workspace\\EvaluationTask\\evaluationfile.txt"));
 				while(sa1.hasNextLine()) {
 					String line=sa1.nextLine();
