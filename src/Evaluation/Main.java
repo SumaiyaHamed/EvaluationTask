@@ -1,6 +1,8 @@
 package Evaluation;
 
 import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -8,6 +10,7 @@ import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
+import java.util.Scanner;
 
 import com.google.gson.Gson;
 
@@ -15,7 +18,7 @@ import com.google.gson.Gson;
 
 public class Main {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws FileNotFoundException {
 		HttpRequest request = HttpRequest.newBuilder().uri(URI.create("https://api.nationalize.io/?name=nathanial"))
 				.method("GET", HttpRequest.BodyPublishers.noBody()).build();
 		HttpResponse<String> response = null;
@@ -28,7 +31,7 @@ public class Main {
 		}
 
 		System.out.println(response.body());
-		String variable=response.body();
+		String task=response.body();
 		System.out.println("  ");
 		
 //Write response in a file:
@@ -37,7 +40,7 @@ public class Main {
 		try {
 
 		FileWriter filewriter = new FileWriter("evaluationfile.txt");
-		filewriter.write(variable.toString());
+		filewriter.write(task.toString());
 		filewriter.close();
 		
 
@@ -55,7 +58,22 @@ public class Main {
 		System.out.println("_____________");
 		System.out.println("  ");
 		System.out.println("****************************************************************");
-
+		System.out.println("  ");
+		
+		//search from file a string which is user input in java:
+		Scanner sa=new Scanner(System.in);
+		String String=sa.next();
+		boolean result=false;
+		int count=0;
+		System.out.println("contentof the line");
+		Scanner sa1=new Scanner(new FileInputStream("C:\\Users\\User007\\eclipse-workspace\\EvaluationTask\\evaluationfile.txt"));
+		while(sa1.hasNextLine()) {
+			String line=sa1.nextLine();
+			System.out.println(line);
+		}
+		
+		
+		
 		//Gson gson = new Gson();
 
 	  // TopApi topapi = gson.fromJson(response.body().toString(), TopApi.class);
