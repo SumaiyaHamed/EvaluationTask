@@ -8,10 +8,12 @@ import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
 public class Nationalize {
 	
-	public static void NationalizeMethod() {
+	public static void NationalizeMethod() throws IOException {
 		HttpRequest request = HttpRequest.newBuilder().uri(URI.create("https://api.nationalize.io/?name=nathanial"))
 				.method("GET", HttpRequest.BodyPublishers.noBody()).build();
 		HttpResponse<String> response = null;
@@ -26,6 +28,8 @@ public class Nationalize {
 		System.out.println(response.body());
 		String task = response.body();
 		System.out.println("  ");
+		
+		
 
 //Write response in a file:
 		System.out.println("****************************************************************");
@@ -52,6 +56,11 @@ public class Nationalize {
 		System.out.println("  ");
 		System.out.println("****************************************************************");
 		System.out.println("  ");
+	}
+	
+	public static void main(String[] args) throws IOException {
+		
+		NationalizeMethod();
 	}
 
 }
